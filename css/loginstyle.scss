@@ -1,0 +1,86 @@
+body{
+margin:0;
+padding:0;
+font-family:montserrat;
+background:linear-gradient(120deg,#71b7e6,#9b59b6,springgreen);
+height: 100vh;
+}
+.container{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:400px;
+  background:white;
+  border-radius:10px;
+
+}
+.container h1
+{
+  text-align: center;
+  padding: 0 0 20px 0;
+}
+.container form{
+  padding:0 40px;
+box-sizing: border-box;
+}
+label{
+  font-size: 16px;
+    color: #555;
+    text-transform: capitalize;
+    display: block;
+    margin-bottom: 5px;
+    font-family:roboto,arial,helvetica neue,sans-serif;
+    font-weight: bolder;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.mail{
+  line-height: 30px;
+  width:240px;
+    background: #fafafa;
+    box-shadow: inset 0 1px 3px 0 rgb(0 0 0 / 8%);
+    border-radius: 5px;
+  border:50px;
+    padding: 5px 30px;
+    font-size: 16px;
+    color: #666;
+    transition: all .4s ease;
+     padding-bottom:10px;
+}
+.pwd{
+  line-height: 30px;
+  width:240px;
+    background: #fafafa;
+    box-shadow: inset 0 1px 3px 0 rgb(0 0 0 / 8%);
+    border-radius: 5px;
+  border:50px;
+    padding: 5px 30px;
+    font-size: 16px;
+    color: #666;
+    transition: all .4s ease;
+     padding-bottom:10px;
+}
+.forgot{
+  margin: -5px 0 20px 5px;
+  color: #adadad;
+  cursor:pointer;
+}
+.forgot:hover{
+  text-decoration: underline;
+}
+.btn{
+
+    text-align: center;
+    background: blueviolet;
+    border-radius: 5px;
+  line-height: 40px;
+  padding: 0 40px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  position: relative;
+  left:100px;
+  font-family: poppins,arial,helvetica neue,sans-serif;
+
+}
