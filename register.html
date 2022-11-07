@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>web Development</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<link href="https://fonts.googleapis.com/css2?family=Acme&family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="main">
+          <nav>
+
+    <ul>
+    <li><a href="">Home</a></li>
+    <li><a href="">About</a></li>
+    <li><a href="">Contact</a></li>
+    <li><a href="index.html">LogIn</a></li>
+    </ul>
+    </nav></div>
+    <br><br><br><br>
+
+<div class="container">
+  <div class="title">Registration</div>
+
+  <div class="user-details">
+    <div class="inputbox1">
+          <label class="details">First Name</label>
+          <input class="text" id="firstname" type="text" placeholder="Enter your firstname"  name="firstname" required>
+            <p id="fname" style="color:red;"></p>
+    </div>
+
+    <div class="inputbox1">
+          <label class="details">Last Name</label>
+<input class="text" id="lastname" type="text" placeholder="Enter your lastname" name="lastname"  required>
+  <p id="lname" style="color:red;"></p>
+    </div>
+
+      <div class="inputbox">
+        <span class="details">DOB</span>
+        <input class="text" id="dob" type="date" placeholder=" " name="dob"required>
+        </div>
+
+        <div class="inputbox">
+          <span class="details" id="gender">Gender</span>
+          <input class="radio" type="radio" name="gender" value="m">Male
+          <input class="radio" type="radio" name="gender" value="f">Female
+          <input class="radio" type="radio" name="gender" value="o">Others
+          </div>
+
+          <div class="inputbox">
+            <span class="details">Phone No</span>
+            <input class="text" id="number" type="tel" placeholder="+91" name="number" required maxlength="10">
+            <p id="numbererror" style="color:red;"></p>
+            </div>
+
+      <div class="inputbox">
+        <span class="details">Email</span>
+        <input class="text"  id="mail" type="email" placeholder="Enter the your Email" name="mail" required>
+        <p id="emailerror" style="color:red;"></p>
+        </div>
+
+        <div class="inputbox">
+          <span class="details">New password</span>
+          <input class="text" id="pwd" type="password" placeholder="Enter your password" name="pwd" required>
+          </div>
+
+        <div class="inputbox">
+          <span class="details">Confirm password</span>
+          <input class="text" id="conpwd" type="password" placeholder="Confirm your password" name="conpwd" required>
+          <p id="error" style="color:red;"></p>
+            </div>
+
+            <div class="submit">
+            <input class="btn" id="subtn" type="" name="" value="Registred" >
+          </div><br><br>
+            <div class="link">
+        <center>  Already have a account? <a href="index.html">Login</a></center>
+              </div>
+              <br><br>
+</body>
+
+<script>
+  $(document).ready(function() {
+     $("#subtn").click(function() {
+       document.getElementById('fname').innerHTML="";
+       document.getElementById('lname').innerHTML="";
+       document.getElementById('numbererror').innerHTML="";
+       document.getElementById('emailerror').innerHTML="";
+        var flag=true;
+        var firstname=document.getElementById('firstname').value;
+        var lastname=document.getElementById('lastname').value;
+        var dob=document.getElementById('dob').value;
+        var gender=document.getElementById('gender').value;
+        var phone= document.getElementById('number').value;
+        var email = document.getElementById('mail').value;
+        var pwd=document.getElementById('pwd').value;
+        var conpwd=document.getElementById('conpwd').value;
+
+        if(firstname == "")
+        {
+          flag=false;
+          document.getElementById('fname').innerHTML="Invalid Data";
+        }
+        if(lastname =="")
+        {
+          flag=false;
+          document.getElementById('lname').innerHTML="Invalid Data";
+        }
+        if(phone.length!=10)
+        {
+          flag=false;
+          document.getElementById('numbererror').innerHTML="Invalid Number";
+        }
+
+        if (email != "") {
+
+            var regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          var result=regexp.test(String(email).toLowerCase());
+
+          if(!result)
+          {
+            flag=false;
+            document.getElementById('emailerror').innerHTML="Invalid Email";
+          }
+        }
+        else {
+          flag=false;
+          document.getElementById('emailerror').innerHTML="Invalid Email";
+        }
+        if(flag)
+        {
+          var dataString= 'firstname='+firstname+'&lastname='+lastname+'&dob='+dob+'&gender='+gender+'&number='+phone+'&mail='+email+
+          '&pwd='+pwd+'&conpwd='+conpwd;
+
+        $.ajax({
+        type: "POST",
+        url: "storedata.php",
+        data: dataString,
+        cache: false,
+        success:function(result)
+        {
+          alert("successfully");
+          window.location="index.html";      }
+        });
+
+}
+
+        });
+        });
+
+</script>
+</html>
